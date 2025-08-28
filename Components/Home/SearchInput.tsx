@@ -2,12 +2,14 @@ import React from 'react'
 
 export default function SearchInput() {
   return (
-    <div>
+    <div className='mt-5'>
         <h2 className='text-center text-[20px] text-gray-400'>
             Lets Search what you need
         </h2>
 
-    <div className='flex items-center '>
+    <div className='flex justify-center'>
+       <div className='flex bg-gray-100 p-1 px-3 gap-2 rounded-full divide-x'>
+         <div className='flex items-center '>
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -33,6 +35,9 @@ export default function SearchInput() {
             <input type='date' className='p-2 outline-none bg-transparent text-gray-300' />
         </div>
     </div>
+       </div>
+    </div>
+    
 
     </div>
   )
