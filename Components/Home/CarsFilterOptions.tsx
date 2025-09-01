@@ -9,18 +9,19 @@ export default function CarsFilterOptions() {
       </div>
 
       <div className="flex gap-5">
-        <select defaultValue="Pick a price" className="select w-full select-neutral md:block max-w-xs hidden select-md ">
+        <select defaultValue="Pick a price" className="select select-bordered w-full md:block max-w-xs">
           <option disabled={true}>Price</option>
-          <option>Min to Max</option>
           <option>Max to Min</option>
+          <option>Min to Max</option>
         </select>
 
-        <select defaultValue="Pick a manufactural" className="select select-bordered w-full md:block max-w-xs hidden select-md">
+        <select defaultValue="Pick a manufactural" className="select select-bordered w-full md:block max-w-xs ">
           <option disabled={true}>Manufactural</option>
+          <option>Honda</option>
           <option>Toyota</option>
           <option>BMW</option>
-          <option>Honda</option>
         </select>
+
       </div>
     </div>
   );

@@ -14,5 +14,7 @@ export default function Homepage() {
           <Image src="/car.avif" alt='Car' width={400} height={400} className='object-cover all w-full' />
         </div>
     </div>
+
+  
   )
 }
