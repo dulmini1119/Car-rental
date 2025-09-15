@@ -1,44 +1,56 @@
-import React from 'react'
+import React from "react";
 
 export default function SearchInput() {
   return (
-    <div className='mt-5'>
-        <h2 className='text-center text-[20px] text-gray-400'>
-            Lets Search what you need
-        </h2>
+    <div className="mt-5 px-4">
+      <h2 className="text-center text-[20px] text-gray-500 mb-6">
+        Lets Search what you need
+      </h2>
 
-    <div className='flex justify-center'>
-       <div className='flex bg-gray-100 p-1 px-3 gap-2 rounded-full divide-x'>
-         <div className='flex items-center '>
+      <div className="flex justify-center m-4">
+        <div className="flex flex-wrap bg-gray-300 p-1 px-2 gap-2 rounded-full divide-x">
+          <div className="flex items-center text-white">
+            <div className="flex items-center flex-1 px-4 py-2 md:py-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                stroke="currentColor"
+                className="w-5 h-5 text-gray-400 mr-2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                />
+              </svg>
+            </div>
 
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          stroke="currentColor"
-          className="w-5 h-5 text-black mx-2"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-          />
-        </svg>
+            <input
+              type="text"
+              placeholder="Location"
+              className="text-gray-700 outline-none bg-transparent "
+            />
 
-        <input type='text' placeholder='Location' className='p-2 outline-none bg-transparent'/>
+            <div className="flex items-center flex-1 px-4 py-3 md:py-3">
+              <input
+                type="date"
+                className=" outline-none bg-transparent text-gray-700  text-center"
+              />
+            </div>
 
-        <div>
-            <input type='date' className='p-2 outline-none bg-transparent text-gray-300' />
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 md:py-3 rounded-full m-2 md:m-0 transition-all duration-200">
+              Search
+            </button>
+          </div>
         </div>
+      </div>
     </div>
-       </div>
-    </div>
-    
-
-    </div>
-  )
+  );
 }

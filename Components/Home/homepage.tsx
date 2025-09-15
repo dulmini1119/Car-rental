@@ -1,20 +1,48 @@
-'use client'
-import Image from 'next/image'
-import React from 'react'
+"use client";
+import Image from "next/image";
+import React from "react";
+import { Typewriter } from "react-simple-typewriter";
 
 export default function Homepage() {
   return (
-    <div className='grid md:grid-cols-2 grid-cols-1'>
-        <div >
-          <h2 className='text-[40px] font-bold md:text-[60px]'>Premium Car Rental in Your Area</h2>
-          <h2 className='text-[20px] md:text-[20px]'>Book the selected car effortlessly, Pay for driving only, Book the Car Now</h2>
-          <button className="p-3 mt-5 bg-gray-500 hover:text-white rounded-full hover:scale-105 transition-all text-[12px]">Explore Cars</button>
-        </div>
-        <div className='mt-5 flex justify-end items-center transition-all rounded-lg'>
-          <Image src="/car.avif" alt='Car' width={400} height={400} className='object-cover all w-full' />
-        </div>
-    </div>
+    <div className="grid md:grid-cols-2 grid-cols-1 gap-8 items-center py-12 px-6 md:px-16">
+      <div className="flex flex-col justify-center space-y-4">
+        <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-snug">
+          Premium Car Rental in Your Area:{" "}
+          <span className="text-blue-600">
+            <Typewriter
+              words={["Fast", "Easy", "Affordable"]}
+              loop={1}
+              cursor
+              cursorStyle="|"
+              typeSpeed={100}
+              deleteSpeed={50}
+              delaySpeed={1500}
+            />
+          </span>
+        </h1>
 
-  
-  )
+        <p className="text-gray-60 text-base md:text-lg">
+          Book the selected car effortlessly, pay only for driving. Find your
+          perfect ride now!
+        </p>
+
+        <button className="mt-6 w-max px-5 py-3 bg-blue-600 text-white font-semibold rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+          Explore Cars
+        </button>
+      </div>
+
+      <div className="relative mt-6 md:mt-0 flex justify-center md:justify-end">
+        <div className="relative w-full max-w-md md:max-w-xl">
+          <Image
+            src="/car.avif"
+            alt="Car"
+            width={500}
+            height={500}
+            className="rounded-xl object-cover shadow-lg"
+          />
+        </div>
+      </div>
+    </div>
+  );
 }

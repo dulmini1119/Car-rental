@@ -5,6 +5,13 @@ const nextConfig: NextConfig = {
    experimental: {
     turbo: false, // disables Turbopack globally
   },
+
+  images:{
+     domains: [
+      "media.graphassets.com",
+      "ap-south-1.graphassets.com" // add this domain
+    ],
+  },
   
 };
 
