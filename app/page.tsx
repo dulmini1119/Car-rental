@@ -3,9 +3,11 @@ import CarsFilterOptions from "@/Components/Home/CarsFilterOptions";
 import CarsList from "@/Components/Home/CarsList";
 import Homepage from "@/Components/Home/homepage";
 import SearchInput from "@/Components/Home/SearchInput";
+import ToastMsg from "@/Components/ToastMsg";
+import { BookCreatedFlagContext,ToastState } from "@/context/BookCreatedFlagContext";
 import { getCarsList } from "@/services";
 import { Car } from "@/types/car";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 
 
@@ -14,6 +16,9 @@ export default function Home() {
 
   const [carsList,setCarsList]=useState<Car[]>([]);
   const [carsOrgList,setCarsOrgList]=useState<Car[]>([]);
+ const [toast, setToast] = useState<ToastState>({ message: "", type: "" });
+
+  const carsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     getCarList_();
@@ -21,7 +26,6 @@ export default function Home() {
 
 
   const getCarList_=async()=>{
-    // const result: { carLists: Car[]}=await getCarsList()
     const result = await getCarsList();
     setCarsList(result?.carLists || [])
     setCarsOrgList(result?.carLists || [])
@@ -46,19 +50,29 @@ export default function Home() {
     setCarsList(sortedList);
   }
 
+   const handleExploreClick = () => {
+    carsRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div className="p-5 sm:px-10 md:px-20">
-      <Homepage />
+      <BookCreatedFlagContext.Provider value={{toast, setToast }}>
+        <Homepage exploreClick={handleExploreClick}/>
 
-      <SearchInput />
+      <SearchInput carsOrgList={carsOrgList} setCarsList={setCarsList} />
 
       <CarsFilterOptions 
       carsList={carsOrgList}
       setBrand={(value:string) => filterCarList(value)}
       setPriceOrder={(order: "asc" | "desc") => filterPrice(order)}/>
 
-      <CarsList carsList={carsList}/>
+      <div ref={carsRef} className="mt-10">
+        <CarsList carsList={carsList}/>
+      </div>
+
+      {<ToastMsg />}
+      </BookCreatedFlagContext.Provider>
+
     </div>
   );
 }

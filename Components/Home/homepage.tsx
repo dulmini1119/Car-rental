@@ -3,7 +3,11 @@ import Image from "next/image";
 import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 
-export default function Homepage() {
+interface HomepageProps{
+  exploreClick: () => void;
+}
+
+export default function Homepage({exploreClick} : HomepageProps) {
   return (
     <div className="grid md:grid-cols-2 grid-cols-1 gap-8 items-center py-12 px-6 md:px-16">
       <div className="flex flex-col justify-center space-y-4">
@@ -27,7 +31,10 @@ export default function Homepage() {
           perfect ride now!
         </p>
 
-        <button className="mt-6 w-max px-5 py-3 bg-blue-600 text-white font-semibold rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+        <button 
+        className="mt-6 w-max px-5 py-3 bg-blue-600 text-white font-semibold rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+        onClick={exploreClick}
+        >
           Explore Cars
         </button>
       </div>

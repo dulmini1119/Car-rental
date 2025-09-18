@@ -1,7 +1,7 @@
 export interface Car {
   id: string;
   name: string;
-  image?: {url:string } | null;
+  image?: { url: string } | null;
   price: number;
   carAvg: number;
   carBrand: string;
@@ -10,4 +10,8 @@ export interface Car {
 
 export interface CarListResponse {
   carLists: Car[];
+}
+
+export interface CarFormProps {
+  car?: Car;
 }

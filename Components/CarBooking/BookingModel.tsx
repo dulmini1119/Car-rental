@@ -21,7 +21,7 @@ export default function BookingModel({ car }: BookingModelProps) {
           <CarCard car={car} />
         </div>
         <div>
-          <Form />
+          <Form car={car}/>
         </div>
       </div>
       

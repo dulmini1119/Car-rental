@@ -7,24 +7,22 @@ interface CarsFilterOptionsProps {
   setPriceOrder: (order: "asc" | "desc") => void;
 }
 
-export default function CarsFilterOptions({ carsList, setBrand,setPriceOrder }: CarsFilterOptionsProps) {
+export default function CarsFilterOptions({
+  carsList,
+  setBrand,
+  setPriceOrder,
+}: CarsFilterOptionsProps) {
   const [brandList, setBrandList] = useState<string[]>([]);
 
   useEffect(() => {
     if (carsList && carsList.length > 0) {
-      filterCarList();
+      const BrandSet = new Set<string>();
+      carsList.forEach((car) => {
+        if (car.carBrand) BrandSet.add(car.carBrand);
+      });
+      setBrandList(Array.from(BrandSet));
     }
   }, [carsList]);
-
-  const filterCarList = () => {
-    const BrandSet = new Set<string>();
-    carsList.forEach((car) => {
-      if (car.carBrand) BrandSet.add(car.carBrand);
-    });
-    setBrandList(Array.from(BrandSet));
-  };
-
-
 
   return (
     <div className="mt-10 flex items-center justify-between mb-10">
@@ -50,11 +48,12 @@ export default function CarsFilterOptions({ carsList, setBrand,setPriceOrder }: 
           onChange={(e) => setBrand(e.target.value)}
         >
           <option disabled>Manufactural</option>
-          {brandList&&brandList.map((brand: string, index: number) => (
-            <option key={index} value={brand}>
-              {brand}
-            </option>
-          ))}
+          {brandList &&
+            brandList.map((brand: string, index: number) => (
+              <option key={index} value={brand}>
+                {brand}
+              </option>
+            ))}
         </select>
       </div>
     </div>
