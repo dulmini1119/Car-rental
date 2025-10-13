@@ -22,6 +22,8 @@ export const getCarsList = async (): Promise<CarListResponse> => {
           url
         }
         carBrand
+        availableFrom
+        availableTo
       }
     }
   `;

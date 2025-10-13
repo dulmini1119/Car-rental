@@ -6,6 +6,8 @@ export interface Car {
   carAvg: number;
   carBrand: string;
   carType: string;
+  availableFrom: string; 
+  availableTo: string;
 }
 
 export interface CarListResponse {
