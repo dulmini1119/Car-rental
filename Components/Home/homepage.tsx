@@ -42,7 +42,7 @@ export default function Homepage({exploreClick} : HomepageProps) {
       <div className="relative mt-6 md:mt-0 flex justify-center md:justify-end">
         <div className="relative w-full max-w-md md:max-w-xl">
           <Image
-            src="/car.avif"
+            src="/car2.jpg"
             alt="Car"
             width={500}
             height={500}
