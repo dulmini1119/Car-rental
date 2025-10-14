@@ -57,7 +57,6 @@ export const createBooking = async (formValue: BookingInput): Promise<BookingRes
       $pickupTime: String!,
       $email: String,
       $userName: String!,
-      $carId: ID!,
 
     ) {
       createBooking(
@@ -69,7 +68,7 @@ export const createBooking = async (formValue: BookingInput): Promise<BookingRes
           pickupTime: $pickupTime
           email: $email
           userName: $userName
-          carId: { connect: { id: $carId } }
+         
           
         }
       ) {
@@ -86,9 +85,44 @@ export const createBooking = async (formValue: BookingInput): Promise<BookingRes
     pickupTime: formValue.pickupTime,
     email: formValue.email || "", 
     userName: formValue.userName,
-    carId: formValue.carId,
   };
 
   const result = await request<BookingResponse>(MASTER_URL, mutationQuery, variables);
   return result;
 };
+
+
+export const getBookings = async () : Promise<BookingResponse> => {
+  const query = gql`
+    query GetBookings {
+      bookings {
+        id
+        pickupDate
+        dropoffDate
+        pickupTime
+        dropoffTime
+        contactNumber
+        totalAmount
+        isCancelled
+        userName
+        email
+        car {
+          id
+          name
+          carBrand
+          image {
+            url
+          }
+        }
+        location {
+          id
+          address
+        }
+      }
+    }
+  `;
+
+  const result = await request<BookingResponse>(MASTER_URL, query);
+  return result; 
+};
+
