@@ -2,11 +2,14 @@ import { BookCreatedFlagContext } from "@/context/BookCreatedFlagContext";
 import { createBooking, getStoreLocations } from "@/services";
 import { CarFormProps } from "@/types/car";
 import { StoreLocation } from "@/types/store";
+import { useRouter } from "next/navigation";
 import React, { useContext, useEffect, useState } from "react";
 
 export default function Form({car}:CarFormProps) {
   const [storeLocation, setStoreLocation] = useState<StoreLocation[]>([]);
- const { setToast } = useContext(BookCreatedFlagContext);
+  const { setToast } = useContext(BookCreatedFlagContext);
+  const router = useRouter();
+
   const [formValue, setFormValue] = useState({
     location:'',
     pickupDate: '',
@@ -36,7 +39,7 @@ useEffect(() => {
   if (car) {
     setFormValue((prev) => ({
       ...prev,
-      carId: car.id // this id exists now
+      carId: car.id,
     }));
   }
 }, [car]);
@@ -56,6 +59,7 @@ useEffect(() => {
 
       if (resp) {
         setToast({ message: "Booking created successfully", type: "success" });
+        router.push("/history")
       }
     } catch (error) {
       console.error("Booking failed:", error);
